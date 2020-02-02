@@ -12,9 +12,9 @@ var instance = axios.create({
 // 添加请求拦截器
 instance.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
-    config.headers['token']=111111
-    config.headers['userId']=22222
-    console.log(config)
+    // config.headers['token']=111111
+    // config.headers['userId']=22222
+    // console.log(config)
     return config;
   }, function (error) {
     // 对请求错误做些什么
@@ -33,7 +33,7 @@ instance.interceptors.response.use(function (response) {
       return Promise.reject(data)
     }else{
       Message.success(data.message);
-      return response;
+      return Promise.resolve(response);
     }
     
   }, function (error) {
