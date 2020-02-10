@@ -9,7 +9,7 @@ Vue.use(VueRouter)
 const routes = [
   // 初始页面
   {
-    path: '/', redirect:'/login',meta:{name:'主页'},hidden:true,
+    path: '/', redirect:'/console',meta:{name:'主页'},hidden:true,
   }, 
   // 登录页面
   {

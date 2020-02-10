@@ -1,9 +1,11 @@
 <template>
   <div id="main-wrap">
     <div class="main-content">
-      <div class="content">abc</div>
+      <div class="content">
+        <router-view></router-view>
+      </div>
     </div>
-    <router-view></router-view>
+    
   </div>
 </template>
 

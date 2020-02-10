@@ -261,7 +261,7 @@ export default {
     const login = () => {
       let responseData = {
         username: ruleForm.username,
-        password: ruleForm.password,
+        password: sha1(ruleForm.password),
         code: ruleForm.checkPass
       };
       context.root.$store.dispatch('app/login',responseData)

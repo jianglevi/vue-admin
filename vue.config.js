@@ -56,7 +56,7 @@ module.exports = {
     hotOnly: false,
     proxy:{     //axios跨域处理
       '/devapi': {       //此处并非和url一致
-        target:'http://www.web-jshtml.cn/productapi/token',
+        target:'http://www.web-jshtml.cn/dependenciesapi/token',
         changeOrigin:true, //允许跨域
         pathRewrite:{ 
           '^/devapi': ''
