@@ -61,7 +61,7 @@
     <!-- 内容表格 -->
     <el-table :data="table_data.item" border style="width: 100%" class="infoIndexTable" v-loading="table_loading" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="40"></el-table-column>
-      <el-table-column prop="title" label="标题" width="330" align="center"></el-table-column>
+      <el-table-column prop="title" label="标题" width="300" align="center"></el-table-column>
       <el-table-column prop="categoryId" label="类型" width="100" align="center" :formatter="toType"></el-table-column>
       <el-table-column prop="createDate" label="日期" width="200" align="center" :formatter="toDate"></el-table-column>
       <el-table-column prop="user" label="管理员" width="100" align="center" ></el-table-column>
@@ -69,6 +69,7 @@
         <template slot-scope="scope">
           <el-button type="danger" size="mini" @click="deleteItem(scope.row)">删除</el-button>
           <el-button type="success" size="mini" @click="editInfo(scope.row)">编辑</el-button>
+          <el-button type="success" size="mini" @click="editInfo(scope.row)">信息详情</el-button>
         </template>
       </el-table-column>
     </el-table>
