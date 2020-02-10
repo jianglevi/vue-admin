@@ -46,12 +46,9 @@ export default {
     // data数据
     // 路由数组
     const routers = reactive(root.$router.options.routes);
-    console.log(routers);
     const handleOpen = (key, keyPath) => {
-      console.log(key, keyPath);
     };
     const handleClose = (key, keyPath) => {
-      console.log(key, keyPath);
     };
     // computed监听
     const isCollapse = computed(() => root.$store.state.app.isCollapse);

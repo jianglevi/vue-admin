@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {message, Message} from 'element-ui'
+import { getToken,getUserName} from '@/assets/js/app'
 
 //axios 实例添加拦截器
 const BASEURL = process.env.MODE_ENV === 'production' ? '' : '/devapi';
@@ -12,9 +13,8 @@ var instance = axios.create({
 // 添加请求拦截器
 instance.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
-    config.headers['token']=111111
-    config.headers['userId']=22222
-    console.log(config)
+    config.headers['Tokey']=getToken();
+    config.headers['UserName']=getUserName(); 
     return config;
   }, function (error) {
     // 对请求错误做些什么
@@ -25,15 +25,15 @@ instance.interceptors.request.use(function (config) {
 // 请求接口后，对数据处理
 instance.interceptors.response.use(function (response) {
     // 对响应数据做点什么
-    console.log(response)
+    // console.log(response)
 
     let data =response.data
     if(data.resCode !== 0){
       Message.error(data.message)
       return Promise.reject(data)
     }else{
-      Message.success(data.message);
-      return response;
+      // Message.success(data.message);
+      return Promise.resolve(response);
     }
     
   }, function (error) {

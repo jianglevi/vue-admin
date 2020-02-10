@@ -1,16 +1,16 @@
 
-const login = {
-    state: {
+const state = {
         
-      },
-      getters:{
-    
-      },
-      mutations: {
-        
-    
-      },
-      actions: {
-      },
 }
-export default login;
+const getters = {
+
+}
+const mutations = {
+
+}
+const actions = {
+  
+}
+export default {
+  namespaced:true,
+  state,getters,mutations,actions};

@@ -86,7 +86,7 @@
 
 <script>
 import sha1 from 'js-sha1'
-import { GetSms, Register, Login } from "@/api/login.js";
+import { GetSms, Register,Login } from "@/api/login.js";
 import { reactive, ref, isRef, onMounted } from "@vue/composition-api";
 import {
   passwordCheck,
@@ -139,8 +139,8 @@ export default {
     // ==============================================================================================
     // 声明数据
     const ruleForm = reactive({
-      username: "",
-      password: "",
+      username: "415765280@qq.com",
+      password: "123456",
       passwords: "",
       checkPass: ""
     });
@@ -240,12 +240,12 @@ export default {
     // 提交按钮函数
     const submitForm = loginName => {
       //模拟注册成功
-
       context.refs[loginName].validate(valid => {
         if (valid) {
           // 表单验证通过
           if (isShow.value === "login") {
-            login();
+             login();
+            // console.log(123)
           } else {
             register();
           }
@@ -258,36 +258,38 @@ export default {
       });
     };
     // 登录
-    const login = (() => {
+    const login = () => {
       let responseData = {
         username: ruleForm.username,
         password: sha1(ruleForm.password),
         code: ruleForm.checkPass
       };
-      context.root.$store.dispatch('login',responseData)
-        .then(response => {
+      context.root.$store.dispatch('app/login',responseData)
+        .then(response => { 
           // 页面跳转控制台
+          clearCountDown();
+          console.log('Login') 
           context.root.$router.push('/console')
           
         })
         .catch(error => {
-
+          console.log('登录失败')
         });
-    //   Login(responseData)
-    //     .then(response => {
-    //          页面跳转控制台
-    //          clearCountDown();
-    //          console.log(111)
-    //       context.root.$router.push('/console')
+      // Login(responseData)
+      //   .then(response => {
+      //        //页面跳转控制台
+      //        clearCountDown();
+      //        console.log('Login') 
+      //        context.root.$router.push('/console')
           
-    //     })
-    //     .catch(error => {
-    //       console(111)
-    //     });
-    });
+      //   })
+      //   .catch(error => {
+      //     console.log('登录失败')
+        // });
+    };
 
     // 注册
-    const register = (() => {
+    const register = () => {
       let responseData = {
         username: ruleForm.username,
         password: sha1(ruleForm.password),
@@ -301,13 +303,13 @@ export default {
           console.log(response);
         })
         .catch(error => {});
-    });
+    };
     // 清除倒计时
-    const clearCountDown = (() => {
+    const clearCountDown = () => {
       clearInterval(timer.value);
       codeButtonStatus.status = false;
       codeButtonStatus.text = "获取验证码";
-    });
+    };
     // =======================================================================================================
     // 生命周期
     onMounted(() => {});
